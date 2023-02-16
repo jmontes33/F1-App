@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DriverContext } from "./DriverContext";
 import { NavLink } from "react-router-dom";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
@@ -20,6 +20,35 @@ function Home() {
       return el.driverLastName.toLowerCase().includes(searchTerm);
     }
   });
+
+
+
+  const x = []
+  drivers.map((item) => {
+    x.push(item.driverImage2)
+  })
+
+
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  useEffect(() => {
+    const images = [];
+    let loadedImages = 0;
+
+    x.forEach((url, index) => {
+      const img = new Image();
+      img.onload = () => {
+        loadedImages ++;
+        if (loadedImages === 19) {
+          setImagesLoaded(true);
+        }
+      }
+      img.src = url;
+      images.push(img);
+    })
+
+  }, [])
+
 
   return (
     <div className="mx-auto max-w-6xl sm:px-6 lg:px-8 py-10">
@@ -72,13 +101,13 @@ function Home() {
               <div className="absolute inset-0 shadow-xl">
                 <div className="flex-shrink-0">
                   <img
-                    className="h-50 w-full object-cover rounded-t-xl"
-                    src={driver.driverImage}
+                    className="h-50 w-full object-cover rounded-t-xl [transform:rotateY(180deg)]"
+                    src={driver.driverImage2}
                     alt=""
                   />
                 </div>
 
-                <div className="flex flex-1 rounded-b-xl shadow-xl flex-col justify-between bg-white p-6">
+                <div className="flex flex-1 rounded-b-xl shadow-xl flex-col justify-between [transform:rotateY(180deg)] bg-white p-6">
                   <div className="flex flex-col justify-between">
                     <div className="flex justify-between items-center">
                       <p className="text-xl font-semibold text-gray-900">
@@ -98,12 +127,12 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-0 h-full w-full px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+              <div className="h-full w-full px-12 text-center text-slate-200 [backface-visibility:hidden]">
                 <div className="absolute inset-0 ">
                   <div className="flex-shrink-0 ">
                   <img
                       className="h-50 w-full object-cover rounded-t-xl shadow-xl"
-                      src={driver.driverImage2}
+                      src={driver.driverImage}
                       alt=""
                     />
                   </div>
