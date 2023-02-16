@@ -64,36 +64,69 @@ function Home() {
           </div>
         </form>
       </div>
-      <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-4">
-        {filteredData.map((driver) => (
-          <div
-            key={driver.id}
-            className="flex flex-col overflow-hidden rounded-lg shadow-lg"
-          >
-            <div className="flex-shrink-0">
-              <img
-                className="h-50 w-full object-cover"
-                src={driver.driverImage}
-                alt=""
-              />
-            </div>
-            <div className="flex flex-1 flex-col justify-between bg-white p-6">
-              <div className="flex flex-col justify-between">
-                <div className="flex justify-between items-center">
-                  <p className="text-xl font-semibold text-gray-900">
-                    {driver.driverName + " " + driver.driverLastName}
-                  </p>
-                  <img className="w-7" src={driver.countryImg} />
+      <div className="mx-auto min-h-screen mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-4">
+        {filteredData.map((driver, index) => (
+          
+          <div key={index} className="h-96 mb-16 group [perspective:1000px]">
+            <div className="transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="absolute inset-0 shadow-xl">
+                <div className="flex-shrink-0">
+                  <img
+                    className="h-50 w-full object-cover rounded-t-xl"
+                    src={driver.driverImage}
+                    alt=""
+                  />
                 </div>
-                <div className="flex justify-between">
-                  <p className="text-left mt-3 text-base text-gray-500 items-center">
-                    {driver.shortName}
-                  </p>
-                  <p className="text-center mt-3 text-base w-7 text-gray-500 items-center">
-                    {driver.number}
-                  </p>
+
+                <div className="flex flex-1 rounded-b-xl shadow-xl flex-col justify-between bg-white p-6">
+                  <div className="flex flex-col justify-between">
+                    <div className="flex justify-between items-center">
+                      <p className="text-xl font-semibold text-gray-900">
+                        {driver.driverName + " " + driver.driverLastName}
+                      </p>
+                      <img className="w-7" src={driver.countryImg} />
+                    </div>
+                    <div className="flex justify-between">
+                      <p className="text-left mt-3 text-base text-gray-500 items-center">
+                        {driver.shortName}
+                      </p>
+                      <p className="text-center mt-3 text-base w-7 text-gray-500 items-center">
+                        {driver.number}
+                      </p>
+                    </div>
+                    <img className="mt-3" src={driver.carImg} />
+                  </div>
                 </div>
-                <img className="mt-3" src={driver.carImg} />
+              </div>
+              <div className="absolute inset-0 h-full w-full px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                <div className="absolute inset-0 ">
+                  <div className="flex-shrink-0 ">
+                  <img
+                      className="h-50 w-full object-cover rounded-t-xl shadow-xl"
+                      src={driver.driverImage2}
+                      alt=""
+                    />
+                  </div>
+                  <div className="flex flex-1 shadow-xl rounded-b-xl flex-col justify-between bg-white p-6">
+                    <div className="flex flex-col justify-between">
+                      <div className="flex justify-between items-center">
+                        <p className="text-xl font-semibold text-gray-900">
+                          {driver.driverName + " " + driver.driverLastName}
+                        </p>
+                        <img className="w-7" src={driver.countryImg} />
+                      </div>
+                      <div className="flex justify-between">
+                        <p className="text-left mt-3 text-base text-gray-500 items-center">
+                          {driver.shortName}
+                        </p>
+                        <p className="text-center mt-3 text-base w-7 text-gray-500 items-center">
+                          {driver.number}
+                        </p>
+                      </div>
+                      <img className="mt-3" src={driver.carImg} />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
