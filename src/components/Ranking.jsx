@@ -1,36 +1,82 @@
 import React from "react";
+import { useState, useContext } from "react";
+import { DriverContext } from "./DriverContext";
 
 function Ranking() {
-  return (
-    <div className="grid min-h-screen grid-col-3 justify-center bg-slate-100">
-      <div className="group h-96 w-96 [perspective:1000px]">
-        <div className="relative h-full w-full rounded-xl shadow-xl transiti-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-          <div className="flex absolute inset-0 gap-5">
-            
-            <img
-              className="h-full w-full  object-cover shadow-xl shadow-black"
-              src="src\assets\leclerc.jpg"
-              alt=""
-            />
-            
+  const [drivers, setDrivers] = useContext(DriverContext);
 
-          </div>
-          <p>asdasd</p>
-          <div className="absolute inset-0 h-full w-full rounded-xl px-12 text-center text-slate-200  [backface-visibility:hidden]">
-            <div className="absolute inset-0">
-              <img
-                className="h-full w-full rounded-xl object-cover shadow-xl shadow-black"
-                src="src\assets\max-b.png"
-                alt=""
-              />
-              <p>asdasd</p>
+  return (
+    <div className="mx-auto max-w-6xl sm:px-6 lg:px-8 py-10 bg-white">
+      <h1 className="text-center text-6xl font-bold leading-tight tracking-tight text-red-600">
+        2023 Driver Standings
+      </h1>
+      <div className="flex flex-col mt-8">
+        <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+              <table className="min-w-full divide-y divide-gray-300">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                    >
+                      Driver
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Country
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Team
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Pts
+                    </th>
+                    <th
+                      scope="col"
+                      className="relative py-3.5 pl-3 pr-4 sm:pr-6"
+                    >
+                      <span className="sr-only">Edit</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 bg-white">
+                  {drivers
+                    .sort(function (a, b) {
+                      return b.points - a.points;
+                    })
+                    .map((driver) => (
+                      <tr>
+                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                          {driver.driverName + " " + driver.driverLastName}
+                        </td>
+                        <td className=" whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {driver.country}
+                        </td>
+                        <td className=" whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {driver.team}
+                        </td>
+                        <td className=" whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {driver.points}
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    // flex flex-col overflow-hidden rounded-lg shadow-lg relative h-full w-full transiti-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]
   );
 }
 

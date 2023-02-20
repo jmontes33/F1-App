@@ -26,12 +26,12 @@ export default function NavBar() {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="block h-5 w-auto lg:hidden"
-                    src="src\assets\F1.svg.png"
+                    src="https://github.com/jmontes33/F1-App/blob/main/src/assets/F1.svg.png?raw=true"
                     alt="Your Company"
                   />
                   <img
                     className="hidden h-4 w-auto lg:block"
-                    src="src\assets\F1.svg.png"
+                    src="https://github.com/jmontes33/F1-App/blob/main/src/assets/F1.svg.png?raw=true"
                     alt="Your Company"
                   />
                 </div>

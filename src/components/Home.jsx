@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { DriverContext } from "./DriverContext";
 import { NavLink } from "react-router-dom";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
@@ -21,39 +21,10 @@ function Home() {
     }
   });
 
-
-
-  const x = []
-  drivers.map((item) => {
-    x.push(item.driverImage2)
-  })
-
-
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  useEffect(() => {
-    const images = [];
-    let loadedImages = 0;
-
-    x.forEach((url, index) => {
-      const img = new Image();
-      img.onload = () => {
-        loadedImages ++;
-        if (loadedImages === 19) {
-          setImagesLoaded(true);
-        }
-      }
-      img.src = url;
-      images.push(img);
-    })
-
-  }, [])
-
-
   return (
-    <div className="mx-auto max-w-6xl sm:px-6 lg:px-8 py-10">
+    <div className="mx-auto max-w-6xl sm:px-6 lg:px-8 py-10 bg-white">
       <h1 className="text-center text-6xl font-bold leading-tight tracking-tight text-red-600">
-        Fórmula 1 2023
+        F1 2023
       </h1>
       <div className="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         <form onSubmit={handleSubmit}>
@@ -87,7 +58,7 @@ function Home() {
               type="text"
               id="default-search"
               className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 dark:placeholder-gray-700 dark:placeholder:text-lg dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="A quién buscas?"
+              placeholder="who are you looking for 👀"
               required
             />
           </div>
@@ -95,7 +66,6 @@ function Home() {
       </div>
       <div className="mx-auto min-h-screen mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-4">
         {filteredData.map((driver, index) => (
-          
           <div key={index} className="h-96 mb-16 group [perspective:1000px]">
             <div className="transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
               <div className="absolute inset-0 shadow-xl">
@@ -117,10 +87,10 @@ function Home() {
                     </div>
                     <div className="flex justify-between">
                       <p className="text-left mt-3 text-base text-gray-500 items-center">
-                        {driver.shortName}
+                        Driver points: {driver.points}
                       </p>
-                      <p className="text-center mt-3 text-base w-7 text-gray-500 items-center">
-                        {driver.number}
+                      <p className="text-right mt-3 text-base text-gray-500 items-center">
+                        Wins: {driver.wins}
                       </p>
                     </div>
                     <img className="mt-3" src={driver.carImg} />
@@ -130,7 +100,7 @@ function Home() {
               <div className="h-full w-full px-12 text-center text-slate-200 [backface-visibility:hidden]">
                 <div className="absolute inset-0 ">
                   <div className="flex-shrink-0 ">
-                  <img
+                    <img
                       className="h-50 w-full object-cover rounded-t-xl shadow-xl"
                       src={driver.driverImage}
                       alt=""

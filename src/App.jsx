@@ -6,15 +6,17 @@ import Ranking from "./components/Ranking";
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <DriverProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/ranking" element={<Ranking />} />
-        </Routes>
-      </DriverProvider>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <NavBar />
+        <DriverProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/ranking" element={<Ranking />} />
+          </Routes>
+        </DriverProvider>
+      </BrowserRouter>
+    </div>
   );
 }
 

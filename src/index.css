@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.App {
+    background-color: rgb(255, 255, 255);
+    background-image: url("./assets/33-def2.png");
+    animation: scroll 1600s linear infinite;
+}
+
+@keyframes scroll {
+    100% {
+        background-position: -30000px 30000px;
+    }
+}
