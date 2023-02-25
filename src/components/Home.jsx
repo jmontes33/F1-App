@@ -23,7 +23,7 @@ function Home() {
 
   return (
     <div className="mx-auto max-w-6xl sm:px-6 lg:px-8 py-10 bg-gray-800">
-      <h1 className="text-center text-6xl font-bold leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-red-900 via-red-800 to-red-200">
+      <h1 className="text-center text-6xl font-bold leading-tight tracking-tight text-red-600">
         F1 2023
       </h1>
       <div className="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
