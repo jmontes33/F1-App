@@ -6,7 +6,7 @@ import Ranking from "./components/Ranking";
 
 function App() {
   return (
-    <div className="App">
+    <div className="bg-gray-800">
       <BrowserRouter>
         <NavBar />
         <DriverProvider>
